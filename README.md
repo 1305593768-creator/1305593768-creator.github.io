@@ -442,24 +442,6 @@
     .watch-box b { display: block; margin-bottom: 8px; color: var(--gold-ink); font-size: 17px; }
     .watch-box span { display: block; color: #4C4440; font-size: 15.5px; line-height: 1.85; }
 
-    .hero-sticker {
-      position: absolute;
-      z-index: 2;
-      display: grid;
-      place-items: center;
-      margin: 0;
-      width: clamp(64px, 7.4vw, 92px);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.92), rgba(240, 220, 166, 0.5));
-      border: 1px solid rgba(231, 201, 125, 0.55);
-      color: var(--gold-deep);
-      box-shadow: var(--soft-shadow), var(--highlight);
-    }
-    .hero-sticker svg { width: 46%; height: 46%; }
-    .hero-sticker.one { top: 6%; right: 9%; --rot: 7deg; transform: rotate(7deg); }
-    .hero-sticker.two { right: 4%; bottom: 7%; width: clamp(52px, 6vw, 74px); --rot: -6deg; transform: rotate(-6deg); }
-
     .hero-right { display: grid; grid-template-rows: auto 1fr; gap: 18px; min-width: 0; }
 
     .about-card { position: relative; overflow: hidden; padding: 24px; }
@@ -722,27 +704,48 @@
 
     /* ---------- Core Cases ---------- */
     .case-section {
-      width: min(100%, 1480px);
+      width: min(1240px, calc(100% - 48px));
       margin: 0 auto;
       padding: clamp(72px, 9vw, 120px) 0;
-      padding-left: max(24px, calc((100vw - 1240px) / 2));
     }
-    .case-section .section-head { width: min(1240px, calc(100% - 48px)); margin-right: auto; }
+    .case-section .section-head { width: 100%; margin-left: auto; margin-right: auto; }
 
     .case-track {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 22px;
-      overflow-x: auto;
-      overscroll-behavior-x: contain;
-      scroll-snap-type: x mandatory;
-      padding: 8px max(24px, calc((100vw - 1240px) / 2)) 30px 4px;
+      justify-content: center;
+      overflow: visible;
+      padding: 8px 0 30px;
     }
     .case-track::-webkit-scrollbar { height: 10px; }
     .case-track::-webkit-scrollbar-track { background: rgba(231, 201, 125, 0.16); border-radius: 999px; }
     .case-track::-webkit-scrollbar-thumb { background: linear-gradient(90deg, rgba(185, 138, 45, 0.5), rgba(231, 201, 125, 0.6)); border-radius: 999px; }
 
-    .case-card { flex: 0 0 min(82vw, 536px); scroll-snap-align: start; min-height: 528px; padding: 28px; overflow: hidden; }
-    .case-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+    .case-card {
+      position: relative;
+      width: 100%;
+      min-height: 0;
+      padding: 26px;
+      overflow: hidden;
+      display: grid;
+      align-content: start;
+      gap: 16px;
+    }
+    .case-card::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -86px;
+      top: -82px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 38% 38%, rgba(255,255,255,0.86), rgba(240,220,166,0.52) 42%, transparent 70%);
+      opacity: 0.78;
+      pointer-events: none;
+    }
+    .case-top { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 0; }
     .case-label { color: var(--gold-ink); font-size: 12.5px; font-weight: 900; letter-spacing: 0.6px; text-transform: uppercase; }
     .case-chip {
       display: inline-flex;
@@ -756,55 +759,110 @@
       font-size: 12px;
       font-weight: 800;
     }
-    .case-card h3 { margin: 0 0 14px; font-family: var(--serif); font-size: clamp(24px, 2.5vw, 32px); line-height: 1.22; color: #2F2D2C; font-weight: 600; }
-    .case-card p { margin: 0; color: #5B534F; font-size: 14.5px; line-height: 1.78; }
-
-    .case-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 24px 0; }
-    .case-flow div { position: relative; min-height: 116px; padding: 13px; border-radius: var(--radius-sm); background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.7); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8); }
-    .case-flow div:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      right: -8px;
-      top: 50%;
-      width: 12px;
-      height: 12px;
-      border-top: 2px solid rgba(185, 138, 45, 0.5);
-      border-right: 2px solid rgba(185, 138, 45, 0.5);
-      transform: translateY(-50%) rotate(45deg);
-      z-index: 3;
-    }
-    .case-flow b {
-      display: grid;
-      place-items: center;
-      width: 28px;
-      height: 28px;
-      margin-bottom: 10px;
-      border-radius: 50%;
-      background: linear-gradient(160deg, var(--gold), #d6a23a);
-      color: #5a3f0a;
-      font-size: 13px;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
-    }
-    .case-flow span { display: block; color: #4D4742; font-size: 13px; font-weight: 700; line-height: 1.45; }
-
-    .mini-diagram { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin: 24px 0; }
-    .mini-diagram span {
+    .case-card h3 {
       position: relative;
-      display: grid;
-      place-items: center;
-      min-height: 76px;
-      padding: 10px;
+      z-index: 1;
+      max-width: 92%;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(24px, 2.5vw, 33px);
+      line-height: 1.22;
+      color: #2F2D2C;
+      font-weight: 600;
+    }
+    .case-card p { margin: 0; color: #5B534F; font-size: 14.5px; line-height: 1.78; }
+    .case-brief {
+      position: relative;
+      z-index: 1;
+      padding: 14px 16px;
       border-radius: var(--radius-sm);
-      border: 1px dashed rgba(185, 138, 45, 0.4);
-      background: rgba(255, 253, 248, 0.55);
+      background: linear-gradient(160deg, rgba(255,255,255,0.72), rgba(239,216,222,0.24));
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      box-shadow: var(--highlight);
+    }
+    .case-brief b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--gold-ink);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+    .case-lens {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .lens-item {
+      position: relative;
+      min-height: 88px;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255,255,255,0.72);
+      background: linear-gradient(180deg, rgba(255,255,255,0.68), rgba(255,253,248,0.42));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.82);
+    }
+    .lens-item::before {
+      content: "";
+      display: block;
+      width: 28px;
+      height: 4px;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--gold-deep), rgba(231,201,125,0.18));
+    }
+    .lens-item strong {
+      display: block;
       color: var(--gold-ink);
       font-size: 13px;
       font-weight: 800;
-      line-height: 1.35;
-      text-align: center;
+      line-height: 1.3;
+    }
+    .lens-item span {
+      display: block;
+      margin-top: 6px;
+      color: #5A514D;
+      font-size: 12.5px;
+      font-weight: 600;
+      line-height: 1.5;
     }
 
-    .case-results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+    .case-method {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .case-method li {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding: 11px 13px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 253, 248, 0.58);
+      border: 1px dashed rgba(185, 138, 45, 0.28);
+      color: #514945;
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+    .case-method b {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: linear-gradient(160deg, rgba(240,220,166,0.9), rgba(231,201,125,0.46));
+      color: #6A4610;
+      font-size: 12px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .case-results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 4px; }
     .result-box {
       padding: 16px 18px;
       border-radius: var(--radius-sm);
@@ -821,6 +879,36 @@
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
     .result-box span { display: block; margin-top: 7px; color: #6A5553; font-size: 13px; font-weight: 700; }
+    .case-result-note {
+      margin-top: -8px;
+      color: var(--gold-ink);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .case-takeaway {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 2px;
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      color: #5B4331;
+      background: linear-gradient(135deg, rgba(240,220,166,0.42), rgba(216,233,244,0.28), rgba(255,255,255,0.5));
+      border: 1px solid rgba(231,201,125,0.38);
+      font-size: 13.5px;
+      line-height: 1.7;
+      font-weight: 700;
+    }
+    .case-takeaway::before {
+      content: "✦";
+      flex: none;
+      color: var(--gold-deep);
+      font-size: 14px;
+      line-height: 1.6;
+    }
 
     /* ---------- Skills star map ---------- */
     .skill-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 0.5fr); align-items: center; gap: 26px; }
@@ -894,19 +982,6 @@
       background: radial-gradient(circle at 35% 30%, #fff, var(--gold) 78%);
       box-shadow: 0 0 0 3px rgba(231, 201, 125, 0.18);
     }
-    .skill-icons-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
-    .skill-icons-row .ico {
-      display: grid;
-      place-items: center;
-      aspect-ratio: 1;
-      border-radius: 14px;
-      border: 1px solid rgba(231, 201, 125, 0.4);
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.8), rgba(240, 220, 166, 0.28));
-      color: var(--gold-deep);
-      box-shadow: var(--highlight);
-    }
-    .skill-icons-row .ico svg { width: 22px; height: 22px; }
-
     /* ---------- Footer ---------- */
     .footer { padding: 30px 24px 50px; color: var(--muted); text-align: center; font-size: 13px; }
     .footer .line { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
@@ -935,6 +1010,7 @@
       .jd-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .jd-strip .eyebrow { grid-column: 1 / -1; }
       .path-panel { min-height: 0; }
+      .case-track { grid-template-columns: 1fr; max-width: 760px; margin: 0 auto; }
       .star-map { min-height: 560px; }
     }
 
@@ -948,18 +1024,23 @@
       .hero { display: block; padding-top: 20px; }
       .hero-left { min-height: 0; padding: 24px 20px; }
       .hero h1 { font-size: 46px; }
-      .hero-sticker { display: none; }
       .hero-right { grid-template-columns: 1fr; margin-top: 16px; }
       .about-card, .data-card, .ability-card, .path-panel, .case-card, .skill-detail { padding: 20px; }
       .jd-strip { margin-top: 16px; grid-template-columns: 1fr; }
       .section-head { display: block; }
       .section-head p { margin-top: 12px; text-align: left; font-size: 14px; }
-      .ability-grid, .case-flow, .mini-diagram, .case-results { grid-template-columns: 1fr; }
+      .case-section .section-head h2 { font-size: 30px; line-height: 1.18; overflow-wrap: anywhere; }
+      .case-section .section-head p { max-width: 100%; overflow-wrap: anywhere; }
+      .ability-grid, .case-flow, .mini-diagram, .case-results, .case-lens { grid-template-columns: 1fr; }
       .case-flow div:not(:last-child)::after { display: none; }
       .ability-card { min-height: 0; }
-      .case-section { padding-left: 14px; }
-      .case-track { padding-right: 14px; }
-      .case-card { flex-basis: min(88vw, 420px); min-height: 0; }
+      .case-section { width: min(100% - 28px, 1240px); }
+      .case-track { grid-template-columns: 1fr; padding-right: 0; }
+      .case-card { min-height: 0; gap: 14px; }
+      .case-card h3 { max-width: 100%; font-size: 24px; overflow-wrap: anywhere; }
+      .lens-item { min-height: 0; }
+      .case-method li { grid-template-columns: 30px minmax(0, 1fr); padding: 12px; }
+      .case-method b { width: 30px; height: 30px; border-radius: 10px; }
       .star-map { min-height: 660px; padding: 14px; }
       .star-map::after { width: 150px; right: 4%; }
       .skill-node { width: 120px; min-height: 76px; font-size: 12.5px; }
@@ -997,8 +1078,6 @@
     <section class="hero" id="overview">
       <div class="hero-left glass lift reveal">
         <span class="hero-glow" aria-hidden="true"></span>
-        <figure class="hero-sticker one floaty" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 5.4L19.5 10l-5.6 1.6L12 17l-1.9-5.4L4.5 10l5.6-1.6L12 3Z"/></svg></figure>
-        <figure class="hero-sticker two floaty-slow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.4 4.8 13.2a4.4 4.4 0 1 1 6.2-6.2l1 1 1-1a4.4 4.4 0 1 1 6.2 6.2L12 20.4Z"/></svg></figure>
         <div class="hero-copy">
           <span class="eyebrow">Portfolio</span>
           <h1><span>Cassie's</span><span class="accent">Content Journey</span></h1>
@@ -1009,11 +1088,11 @@
           <div class="hero-focus">用户洞察 × 内容策略 × 圈层传播</div>
           <ul class="intro-list">
             <li>过去的经历横跨品牌营销、达人传播、内容运营与用户行为研究。</li>
-            <li>我参与过 OutIn 与 Snow Peak、漫旅、朝日唯品等品牌联动项目，负责达人传播、内容策划与项目推进。</li>
-            <li>我独立运营小红书账号，并基于 3 万+海外用户互动数据研究内容特征如何影响用户参与。</li>
+            <li>参与过 OutIn 与 Snow Peak、漫旅、朝日唯品等品牌联动项目，负责达人传播、内容策划与项目推进。</li>
+            <li>独立运营小红书账号，并基于 3 万+海外用户互动数据研究内容特征如何影响用户参与。</li>
           </ul>
           <div class="watch-box">
-            <b>我更关注：</b>
+            <b>更关注：</b>
             <span>为什么用户愿意停留？为什么愿意讨论？为什么愿意主动创造内容？</span>
           </div>
         </div>
@@ -1037,23 +1116,23 @@
           <div class="data-grid" aria-label="核心数据看板">
             <div class="data-tile">
               <span class="data-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3"/><path d="M3.5 19c0-2.9 2.2-5 5-5s5 2.1 5 5"/><path d="M16 6.2a3 3 0 0 1 0 5.6"/><path d="M17.6 14.4c2 .6 3.4 2.2 3.4 4.6"/></svg></span>
-              <span class="data-body"><strong class="stat-num" data-count="100" data-suffix="+">100+</strong><span class="data-label">达人合作</span></span>
+              <span class="data-body"><strong class="stat-num" data-count="100" data-suffix="+">100+</strong><span class="data-label">月达人合作数</span></span>
             </div>
             <div class="data-tile">
               <span class="data-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 4 7.6l8 3.6 8-3.6L12 4Z"/><path d="M4 12.2l8 3.6 8-3.6"/><path d="M4 16.6l8 3.6 8-3.6"/></svg></span>
-              <span class="data-body"><strong class="stat-num" data-count="149" data-suffix="">149</strong><span class="data-label">内容发布</span></span>
+              <span class="data-body"><strong class="stat-num" data-count="80" data-suffix="+">80+</strong><span class="data-label">月笔记发布数</span></span>
             </div>
             <div class="data-tile">
               <span class="data-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8 8a5.5 5.5 0 0 0 0 8"/><path d="M16 8a5.5 5.5 0 0 1 0 8"/><path d="M5 5a9.5 9.5 0 0 0 0 14"/><path d="M19 5a9.5 9.5 0 0 1 0 14"/></svg></span>
-              <span class="data-body"><strong class="stat-num" data-count="110" data-suffix="W+">110W+</strong><span class="data-label">传播曝光</span></span>
+              <span class="data-body"><strong class="stat-num" data-count="110" data-suffix="W+">110W+</strong><span class="data-label">月话题阅读量</span></span>
             </div>
             <div class="data-tile">
               <span class="data-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.4 4.8 13.2a4.4 4.4 0 1 1 6.2-6.2l1 1 1-1a4.4 4.4 0 1 1 6.2 6.2L12 20.4Z"/></svg></span>
-              <span class="data-body"><strong class="stat-num" data-count="3700" data-suffix="+">3700+</strong><span class="data-label">账号粉丝</span></span>
+              <span class="data-body"><strong class="stat-num" data-count="3700" data-suffix="+">3700+</strong><span class="data-label">个人账号粉丝量</span></span>
             </div>
             <div class="data-tile">
               <span class="data-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V11"/><path d="M10 20V5"/><path d="M16 20v-8"/><path d="M3 20h18"/><path d="m16 6 1.6-1.6L19 6"/></svg></span>
-              <span class="data-body"><strong class="stat-num" data-count="30000" data-suffix="+">30000+</strong><span class="data-label">研究样本</span></span>
+              <span class="data-body"><strong class="stat-num" data-count="30000" data-suffix="+">30000+</strong><span class="data-label">用户研究样本</span></span>
             </div>
           </div>
         </div>
@@ -1074,7 +1153,7 @@
       <div class="section-head reveal">
         <div>
           <span class="eyebrow">Why Me</span>
-          <h2>好的传播，始于理解用户。</h2>
+          <h2>好的传播，始于理解用户</h2>
         </div>
         <p>内容传播、热点洞察、用户研究与协作经验，汇成一套从人群理解到内容放大的工作方法。</p>
       </div>
@@ -1087,7 +1166,7 @@
             <span class="source">OutIn 品牌增长项目</span>
             <div class="ability-metrics">
               <span>100+ 达人合作</span>
-              <span>149 篇内容</span>
+              <span>月均 80+ 篇笔记</span>
               <span>110W+ 曝光</span>
             </div>
             <p>围绕消费场景与用户情绪组织内容，持续优化标题、首图与叙事结构，让传播从被看见走向被讨论。</p>
@@ -1186,9 +1265,9 @@
       <div class="section-head reveal">
         <div>
           <span class="eyebrow">Core Cases</span>
-          <h2>从问题到方法，再到可复盘的结果。</h2>
+          <h2>把网感变成可复盘的内容判断</h2>
         </div>
-        <p>三个核心案例分别对应达人传播、内容运营与用户研究，呈现从问题、洞察到结果的完整路径。</p>
+        <p>做内容运营时，我更关注项目背后的圈层关系：先拆人群需求和社区语境，再判断选题能否被讨论、被收藏、被作者共创，最后用数据复盘把一次传播沉淀成下一轮方法。</p>
       </div>
 
       <div class="case-track" aria-label="横向案例展示">
@@ -1197,59 +1276,81 @@
             <span class="case-label">Case 01 / 达人传播优化</span>
             <span class="case-chip">OutIn</span>
           </div>
-          <h3>如何找到真正有转化价值的达人？</h3>
-          <p>最初合作方向以泛生活方式达人为主，曝光表现良好，但实际互动与转化有限。</p>
-          <div class="case-flow">
-            <div><b>1</b><span>发现问题</span></div>
-            <div><b>2</b><span>洞察用户</span></div>
-            <div><b>3</b><span>调整达人策略</span></div>
-            <div><b>4</b><span>传播效果提升</span></div>
+          <h3>把“泛生活方式曝光”改成“咖啡决策场景种草”</h3>
+          <div class="case-brief">
+            <b>真实问题</b>
+            <p>品牌合作初期偏向泛生活方式达人，画面好看、曝光不差，但评论多停留在“好美”“想去”，很少进入“这台机器适合谁、怎么用、值不值得买”的决策讨论。</p>
           </div>
-          <p>复盘评论区后发现，咖啡垂类达人虽然体量更小，但讨论更聚焦于产品体验与购买决策。</p>
+          <div class="case-lens">
+            <div class="lens-item"><strong>圈层判断</strong><span>咖啡爱好者更关心萃取口感、便携场景和设备稳定性。</span></div>
+            <div class="lens-item"><strong>内容钩子</strong><span>从“露营氛围感”切到“户外也能喝到好咖啡”。</span></div>
+            <div class="lens-item"><strong>复盘信号</strong><span>收藏、追问参数、使用场景评论，比单纯点赞更接近转化。</span></div>
+          </div>
+          <ul class="case-method">
+            <li><b>01</b><span>重排达人池：把达人按“审美曝光型 / 垂类信任型 / 场景共创型”分层，优先推进咖啡垂类和户外咖啡场景达人。</span></li>
+            <li><b>02</b><span>改内容 brief：要求达人把产品放进具体一天里，呈现取水、研磨、萃取、清洁等真实步骤，让用户能代入使用成本。</span></li>
+            <li><b>03</b><span>上线后看评论区：筛出“充一次电能用几次”“和手冲差别”“露营带着重吗”等高意向问题，反向补充下一轮选题。</span></li>
+          </ul>
           <div class="case-results">
-            <div class="result-box"><strong>3000+</strong><span>点赞</span></div>
-            <div class="result-box"><strong>800+</strong><span>收藏</span></div>
+            <div class="result-box"><strong>3000+</strong><span>优质内容点赞</span></div>
+            <div class="result-box"><strong>800+</strong><span>优质内容收藏</span></div>
           </div>
+          <div class="case-result-note">远超达人平时数据</div>
+          <div class="case-takeaway">我的判断：达人不是越大越好，关键是他的评论区有没有“同一套消费语言”。能让用户替自己提问的内容，才更接近种草。</div>
         </article>
 
         <article class="case-card glass lift reveal" data-delay="1">
           <div class="case-top">
-            <span class="case-label">Case 02 / 内容传播规律</span>
+            <span class="case-label">Case 02 / 社区内容增长</span>
             <span class="case-chip">XHS</span>
           </div>
-          <h3>为什么有些内容天然适合被分享？</h3>
-          <p>高互动内容往往并非信息量最多，而是最能触发用户情绪共鸣。</p>
-          <div class="mini-diagram">
-            <span>选题逻辑</span>
-            <span>内容结构</span>
-            <span>情绪触发点</span>
-            <span>数据结果</span>
+          <h3>研究生宿舍创业拼豆：把“小众手作”做成可围观的成长故事</h3>
+          <div class="case-brief">
+            <b>真实问题</b>
+            <p>这篇内容不是单纯展示拼豆成品，而是把“研究生宿舍创业”和“拼豆手作”两个热点叠在一起：前者有真实成长感和反差，后者有治愈、可复制、低门槛的兴趣吸引力。</p>
           </div>
-          <p>例如“大学生在校创业”比普通经验总结更能引起学生群体兴趣。用户分享的是内容带来的情绪价值。</p>
+          <div class="case-lens">
+            <div class="lens-item"><strong>热点叠加</strong><span>“宿舍创业”提供故事张力，“拼豆”提供视觉记忆点和兴趣圈层入口。</span></div>
+            <div class="lens-item"><strong>人群语感</strong><span>面向学生党、手作爱好者和想搞副业的年轻人，用“我也能试试”的表达降低距离感。</span></div>
+            <div class="lens-item"><strong>传播钩子</strong><span>封面突出宿舍场景和拼豆成果，标题保留“研究生”“创业”“拼豆”等高识别关键词。</span></div>
+          </div>
+          <ul class="case-method">
+            <li><b>01</b><span>选题不是写“我做了拼豆”，而是写“研究生如何在宿舍把兴趣做成小生意”，让内容同时进入创业、副业、手作三个讨论场。</span></li>
+            <li><b>02</b><span>结构上先给结果，再讲过程：成品/订单/宿舍桌面先吸引停留，再补充成本、时间、接单方式和踩坑，提升收藏价值。</span></li>
+            <li><b>03</b><span>评论区重点承接“怎么开始”“成本多少”“能不能定制”等问题，把一次爆款变成后续选题池。</span></li>
+          </ul>
           <div class="case-results">
             <div class="result-box"><strong>2W+</strong><span>单篇点赞</span></div>
             <div class="result-box"><strong>3700+</strong><span>粉丝沉淀</span></div>
           </div>
+          <div class="case-takeaway">我的判断：网感不是把热点词堆上去，而是找到两个热点之间的连接点。创业给内容以故事线，拼豆给内容以视觉符号，二者叠加才更容易被围观、收藏和追问。</div>
         </article>
 
         <article class="case-card glass lift reveal" data-delay="2">
           <div class="case-top">
-            <span class="case-label">Case 03 / 用户行为研究</span>
+            <span class="case-label">Case 03 / 用户研究迁移</span>
             <span class="case-chip">Research</span>
           </div>
-          <h3>文化差异如何影响用户互动？</h3>
-          <p>基于 Facebook 品牌内容与用户互动数据，观察文化元素、内容特征与用户行为之间的关系。</p>
-          <div class="mini-diagram">
-            <span>研究问题</span>
-            <span>分析框架</span>
-            <span>研究结论</span>
-            <span>策略迁移</span>
+          <h3>用研究方法拆内容互动：用户为什么愿意参与，而不是只看见</h3>
+          <div class="case-brief">
+            <b>真实问题</b>
+            <p>在硕士论文中，我基于 Facebook 平台 3W+ 条品牌内容和用户互动数据，分析海外用户对不同内容特征的反应差异。这个训练让我更习惯从“行为信号”反推内容策略。</p>
           </div>
-          <p>文化认同感、内容本土化程度与情绪表达，都会显著影响互动意愿。</p>
+          <div class="case-lens">
+            <div class="lens-item"><strong>研究框架</strong><span>把内容拆成主题、情绪、本土化表达、互动形式等变量。</span></div>
+            <div class="lens-item"><strong>行为信号</strong><span>区分点赞、评论、分享背后的不同参与成本和动机。</span></div>
+            <div class="lens-item"><strong>策略迁移</strong><span>适合用于社区圈层拆解、内容范式总结和作者选题建议。</span></div>
+          </div>
+          <ul class="case-method">
+            <li><b>01</b><span>从样本里找规律：不是只看总互动量，而是看不同内容特征对应的互动差异，避免被单个爆款误导。</span></li>
+            <li><b>02</b><span>把结论转成运营语言：例如“文化认同”“本土表达”“情绪强度”，可以对应小红书里的圈层黑话、生活方式符号和评论触发点。</span></li>
+            <li><b>03</b><span>用于作者生态：给创作者建议时，不只给题目，而是说明为什么这个题目能激发讨论、收藏或二创。</span></li>
+          </ul>
           <div class="case-results">
             <div class="result-box"><strong>3W+</strong><span>样本数据</span></div>
-            <div class="result-box"><strong>User</strong><span>互动洞察</span></div>
+            <div class="result-box"><strong>4类</strong><span>互动信号拆解</span></div>
           </div>
+          <div class="case-takeaway">我的判断：好的内容运营需要“感性抓梗”和“理性复盘”同时在线。前者帮我进入社区，后者帮我把经验沉淀成可复用方法。</div>
         </article>
       </div>
     </section>
@@ -1259,7 +1360,7 @@
       <div class="section-head reveal">
         <div>
           <span class="eyebrow">Skills</span>
-          <h2>能力不是星级，而是一张可以连接的星图。</h2>
+          <h2>能力不是星级，而是一张可以连接的星图</h2>
         </div>
         <p>社区内容工作需要同时连接观察、策划、合作、数据与协作，让每一次传播都有可复盘的判断依据。</p>
       </div>
@@ -1301,12 +1402,6 @@
             <li>对应 Facebook 用户互动研究</li>
             <li>适合观察玩家社区创作动机</li>
           </ul>
-          <div class="skill-icons-row" aria-hidden="true">
-            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.3-4.3"/></svg></span>
-            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 5.4L19.5 10l-5.6 1.6L12 17l-1.9-5.4L4.5 10l5.6-1.6L12 3Z"/></svg></span>
-            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20s2-1 4-1 3 1 5 1 4-1 4-1"/><path d="M14.5 5.5 18 9l-7.5 7.5L7 17l.5-3.5L14.5 5.5Z"/></svg></span>
-            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.4 4.8 13.2a4.4 4.4 0 1 1 6.2-6.2l1 1 1-1a4.4 4.4 0 1 1 6.2 6.2L12 20.4Z"/></svg></span>
-          </div>
         </aside>
       </div>
     </section>
@@ -1421,7 +1516,7 @@
         community: { title: "玩家社区观察", desc: "我习惯通过评论区、二创内容与用户讨论理解社区情绪，先看用户为什么在某个内容下停留，再判断选题是否值得放大。", proof: ["对应小红书账号内容复盘", "对应 Facebook 用户互动研究", "适合观察玩家社区创作动机"] },
         hotspot:   { title: "热点敏感度", desc: "持续关注平台热点变化与用户兴趣迁移，把热门话题转译成具体内容角度，而不是只追随热词。", proof: ["多篇小红书 2W+ 点赞内容", "围绕消费场景与情绪价值设计选题", "能够快速判断社区讨论的可延展方向"] },
         kol:       { title: "KOL合作", desc: "具备达人筛选、合作沟通、内容审核、上线跟进与数据复盘经验，关注达人与目标用户之间的信任关系。", proof: ["月均推进 100+ 达人合作", "优质内容 3000+ 点赞、800+ 收藏", "通过垂类匹配提升传播价值"] },
-        content:   { title: "内容策划", desc: "能够从用户需求出发设计传播内容，把标题、首图、内容结构与互动触发点放在同一个策略链路里看。", proof: ["累计推动 149 篇内容发布", "OutIn 单平台传播 110W+", "个人账号验证可分享内容结构"] },
+        content:   { title: "内容策划", desc: "能够从用户需求出发设计传播内容，把标题、首图、内容结构与互动触发点放在同一个策略链路里看。", proof: ["月均推动 80+ 篇笔记发布", "OutIn 单平台传播 110W+", "个人账号验证可分享内容结构"] },
         data:      { title: "数据分析", desc: "具备用户行为研究与内容数据分析能力，能把阅读、互动、收藏、评论和研究数据转化为下一轮内容判断。", proof: ["3W+ 海外用户行为样本", "Facebook 品牌内容互动研究", "CTR、互动率、收藏率复盘经验"] },
         team:      { title: "跨团队协作", desc: "有品牌联名和多方沟通经验，能在合作方、内部团队和内容目标之间推进项目落地。", proof: ["Snow Peak、漫旅、朝日唯品联名项目", "方案沟通、物料筹备、活动落地", "兼顾品牌诉求与用户兴趣"] }
       };
@@ -1441,5 +1536,6 @@
       });
     })();
   </script>
+
 </body>
 </html>
