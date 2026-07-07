@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>From User Expression to Community Growth | 周慧 Cassie</title>
+  <meta name="description" content="周慧 Cassie 的无限暖暖内容生态观察、研究手账与营销策划作品集。">
+  <style>
+    :root {
+      --bg: #fff3f8;
+      --bg-2: #ffe7f0;
+      --paper: rgba(255, 252, 255, .82);
+      --paper-strong: rgba(255, 255, 255, .94);
+      --pink: #f46fa2;
+      --pink-2: #ffb4cf;
+      --rose: #b84272;
+      --rose-dark: #623042;
+      --blue: #7ed7ff;
+      --cyan: #8ff3f0;
+      --violet: #b99cff;
+      --ink: #2d2430;
+      --muted: #705e68;
+      --line: rgba(184, 66, 114, .18);
+      --line-strong: rgba(184, 66, 114, .30);
+      --shadow: 0 26px 80px -42px rgba(142, 42, 84, .58), 0 14px 42px -30px rgba(65, 73, 138, .46);
+      --soft: 0 18px 44px -30px rgba(142, 42, 84, .52);
+      --radius: 30px;
+      --radius-sm: 18px;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      --serif: "Songti SC", "Noto Serif SC", Georgia, serif;
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.68;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 180, 207, .62), transparent 30%),
+        radial-gradient(circle at 92% 0%, rgba(126, 215, 255, .40), transparent 28%),
+        linear-gradient(180deg, #fff6fb 0%, #ffeaf3 42%, #fff7fb 100%);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(184,66,114,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,66,114,.045) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.08));
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 18% 32%, rgba(255,255,255,.78) 0 1px, transparent 2px),
+        radial-gradient(circle at 74% 26%, rgba(255,255,255,.78) 0 1px, transparent 2px),
+        radial-gradient(circle at 42% 72%, rgba(255,255,255,.64) 0 1px, transparent 2px);
+      background-size: 180px 180px, 220px 220px, 260px 260px;
+      opacity: .75;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; }
+
+    .shell { width: min(1180px, calc(100% - 44px)); margin: 0 auto; }
+    .glass {
+      background: linear-gradient(145deg, var(--paper-strong), rgba(255, 239, 247, .70));
+      border: 1px solid rgba(255,255,255,.74);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(22px) saturate(1.18);
+      -webkit-backdrop-filter: blur(22px) saturate(1.18);
+    }
+    .section { padding: clamp(78px, 9vw, 126px) 0; scroll-margin-top: 92px; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 243, 248, .78);
+      border-bottom: 1px solid rgba(255,255,255,.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      color: var(--rose-dark);
+      font-weight: 950;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #fff, #ffcfe0 74%);
+      color: var(--rose);
+      box-shadow: var(--soft);
+    }
+    .links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .links a {
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      color: #765765;
+      font-size: 13px;
+      font-weight: 850;
+    }
+    .links a:hover { background: rgba(255,255,255,.74); color: var(--rose); }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(255, 205, 224, .48));
+      border: 1px solid var(--line);
+      color: var(--rose);
+      font-size: 12.5px;
+      font-weight: 950;
+      letter-spacing: .35px;
+    }
+    .pill::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 0 0 0 4px rgba(244,111,162,.16);
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      align-items: center;
+      padding: 34px 0 26px;
+    }
+    .hero-copy {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      min-height: min(720px, calc(100vh - 128px));
+      border-radius: var(--radius);
+      padding: clamp(34px, 7vw, 86px);
+      text-align: center;
+    }
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,246,251,.70), rgba(255,243,248,.78)),
+        url("新无暖-assets/underwater.png") center/cover;
+      opacity: .94;
+      pointer-events: none;
+    }
+    .hero-copy::after {
+      content: "CASSIE";
+      position: absolute;
+      left: 50%;
+      bottom: -62px;
+      transform: translateX(-50%);
+      color: rgba(244,111,162,.12);
+      font-size: clamp(88px, 13vw, 188px);
+      font-weight: 1000;
+      letter-spacing: 2px;
+      pointer-events: none;
+    }
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      margin: 22px 0 18px;
+      font-family: var(--serif);
+      font-size: clamp(32px, 4.8vw, 58px);
+      line-height: 1.03;
+      letter-spacing: 0;
+    }
+    .hero h1 span { display: block; }
+    .hero h1 .accent {
+      color: transparent;
+      background: linear-gradient(105deg, var(--pink), #cf68bd 52%, #6fcfee);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .role {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 6px;
+      margin-bottom: 24px;
+      justify-items: center;
+    }
+    .role strong { font-size: clamp(24px, 2.8vw, 34px); line-height: 1.22; }
+    .role span { color: var(--rose); font-weight: 900; }
+    .profile-line {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 0 0 26px;
+      padding: 0;
+      list-style: none;
+    }
+    .profile-line li {
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid var(--line);
+      color: var(--rose);
+      font-size: 13px;
+      font-weight: 900;
+      box-shadow: 0 12px 28px -22px rgba(142, 42, 84, .46);
+    }
+    .manifesto {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 14px;
+      max-width: 650px;
+      margin: 0;
+      color: #463944;
+      font-size: clamp(16px, 1.5vw, 19px);
+      line-height: 1.86;
+    }
+    .manifesto b { color: var(--rose-dark); }
+    .match-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      width: min(880px, 100%);
+      margin: 2px 0 24px;
+    }
+    .match-card {
+      display: grid;
+      gap: 6px;
+      min-height: 98px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.62);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 36px -28px rgba(142, 42, 84, .46);
+      text-align: left;
+    }
+    .match-card b {
+      color: var(--rose);
+      font-size: 13px;
+      letter-spacing: .3px;
+    }
+    .match-card span {
+      color: #443843;
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 800;
+    }
+    .scroll-note {
+      position: relative;
+      z-index: 1;
+      display: inline-grid;
+      gap: 5px;
+      width: fit-content;
+      margin-top: 32px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.62);
+      border: 1px solid var(--line);
+      color: var(--rose);
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .hero-visual {
+      display: none;
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #12225c;
+      box-shadow: var(--shadow);
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 620px;
+      object-fit: cover;
+      object-position: 45% center;
+      filter: saturate(1.06) contrast(1.03);
+    }
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255, 243, 248, .10), transparent 38%),
+        linear-gradient(180deg, transparent 55%, rgba(255, 192, 218, .26));
+      pointer-events: none;
+    }
+    .floating-caption {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 13px 16px;
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(53, 36, 75, .42);
+      border: 1px solid rgba(255,255,255,.34);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 34px;
+    }
+    .section-head h2 {
+      margin: 14px 0 0;
+      font-family: var(--serif);
+      font-size: clamp(34px, 4.4vw, 58px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    .section-head p {
+      max-width: 480px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15.5px;
+      text-align: right;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+    .essay-card {
+      border-radius: var(--radius);
+      padding: clamp(26px, 3.8vw, 44px);
+      display: grid;
+      align-content: center;
+    }
+    .essay-card p {
+      margin: 0 0 18px;
+      color: #463944;
+      font-size: clamp(17px, 1.8vw, 22px);
+      line-height: 1.9;
+      font-weight: 650;
+    }
+    .essay-card p:last-child { margin-bottom: 0; }
+    .essay-card b { color: var(--rose); }
+    .why-proof {
+      display: grid;
+      gap: 16px;
+    }
+    .proof-card {
+      display: grid;
+      gap: 12px;
+      min-height: 170px;
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      box-shadow: var(--soft);
+    }
+    .proof-card strong { color: var(--rose-dark); font-size: 20px; line-height: 1.25; }
+    .proof-card p { margin: 0; color: #574750; font-size: 14.5px; }
+    .proof-card img {
+      width: 100%;
+      height: 170px;
+      max-height: 170px;
+      object-fit: cover;
+      object-position: left top;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.05);
+    }
+    .proof-card.visual {
+      min-height: 250px;
+      overflow: hidden;
+      padding: 0;
+      background: #fff;
+    }
+    .proof-card.visual img {
+      height: 100%;
+      max-height: none;
+      object-fit: cover;
+      object-position: center 40%;
+      border: 0;
+      border-radius: 24px;
+      opacity: .92;
+    }
+    .observations {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .ob-card {
+      min-height: 190px;
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255,255,255,.70);
+      border: 1px solid var(--line);
+      box-shadow: var(--soft);
+    }
+    .ob-card strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--rose);
+      font-size: 13px;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+    }
+    .ob-card p { margin: 0; color: #463944; font-size: 15px; line-height: 1.8; }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+    .loop-card {
+      border-radius: var(--radius);
+      padding: 28px;
+      overflow: hidden;
+    }
+    .loop-flow {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .loop-step {
+      display: grid;
+      grid-template-columns: 46px minmax(0,1fr);
+      gap: 13px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid var(--line);
+    }
+    .loop-step b {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--pink), var(--violet));
+      box-shadow: var(--soft);
+    }
+    .loop-step span { color: #493d46; font-weight: 860; }
+    .progress-strip {
+      display: grid;
+      gap: 14px;
+      height: 100%;
+      max-height: 650px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      padding: 4px 10px 4px 4px;
+    }
+    .progress-strip::-webkit-scrollbar { width: 8px; }
+    .progress-strip::-webkit-scrollbar-thumb {
+      background: rgba(203, 78, 130, .28);
+      border-radius: 999px;
+    }
+    .progress-card {
+      position: relative;
+      scroll-snap-align: start;
+      overflow: hidden;
+      border-radius: 26px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      box-shadow: var(--soft);
+      display: grid;
+      grid-template-columns: 188px minmax(0, 1fr);
+      min-height: 176px;
+    }
+    .progress-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 176px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .progress-card:nth-child(1) img { object-position: center 42%; }
+    .progress-card:nth-child(2) img { object-position: center 28%; }
+    .progress-card:nth-child(3) img { object-position: center 28%; }
+    .progress-card:nth-child(4) img { object-position: center 36%; }
+    .progress-body {
+      display: grid;
+      gap: 10px;
+      padding: 20px;
+    }
+    .progress-body strong {
+      color: var(--rose-dark);
+      font-size: 20px;
+      line-height: 1.25;
+    }
+    .progress-body p {
+      margin: 0;
+      color: #574750;
+      font-size: 14.5px;
+      line-height: 1.78;
+    }
+    .progress-index {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      display: grid;
+      place-items: center;
+      min-width: 46px;
+      height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      color: var(--rose);
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      font-weight: 950;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+    }
+    .evidence-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 310px;
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .evidence-card.featured { grid-column: 1 / -1; }
+    .evidence-card h3 { margin: 12px 0 10px; font-size: 25px; line-height: 1.2; }
+    .evidence-card p { margin: 0; color: #574750; font-size: 14.5px; }
+    .work-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 14px;
+      color: var(--rose);
+      font-size: 12.5px;
+      font-weight: 900;
+    }
+    .work-list {
+      display: grid;
+      gap: 9px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .work-list li {
+      position: relative;
+      padding-left: 18px;
+      color: #4f4147;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .work-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 0 0 0 4px rgba(244,111,162,.14);
+    }
+    .thinking {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.66);
+      border: 1px solid var(--line);
+      color: #574750;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .thinking b { color: var(--rose); }
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .metrics span {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      color: var(--rose);
+      font-weight: 900;
+      font-size: 13px;
+    }
+    .case-study {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.66);
+      border: 1px solid var(--line);
+    }
+    .case-study h4 {
+      margin: 0 0 10px;
+      color: var(--rose-dark);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+    .case-study p {
+      margin: 0;
+      color: #51424b;
+      font-size: 14.5px;
+      line-height: 1.78;
+    }
+    .case-flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .case-shot {
+      overflow: hidden;
+      border-radius: 20px;
+      background: rgba(255,255,255,.74);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 36px -30px rgba(142,42,84,.46);
+    }
+    .case-shot img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      object-position: center 64%;
+      display: block;
+      background: #fff;
+    }
+    .case-shot:nth-child(1) img { object-position: center 62%; }
+    .case-shot:nth-child(2) img { object-position: center 65%; }
+    .case-shot:nth-child(3) img { object-position: center 68%; }
+    .case-shot span {
+      display: block;
+      padding: 10px 12px 12px;
+      color: var(--rose-dark);
+      font-size: 13px;
+      font-weight: 950;
+      line-height: 1.45;
+    }
+
+    .support-timeline {
+      position: relative;
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+      padding-top: 26px;
+    }
+    .support-timeline::before {
+      content: "";
+      position: absolute;
+      left: 9%;
+      right: 9%;
+      top: 12px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(203,78,130,.32), transparent);
+    }
+    .support-timeline .evidence-card {
+      min-height: 0;
+      padding: 22px;
+    }
+    .support-timeline .evidence-card::before {
+      content: "";
+      position: absolute;
+      left: 34px;
+      top: -20px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 0 0 0 7px rgba(244,111,162,.16);
+    }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .note-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 260px minmax(0,1fr);
+      overflow: hidden;
+      min-height: 320px;
+      border-radius: var(--radius);
+    }
+    .note-stack {
+      display: contents;
+      gap: 18px;
+    }
+    .note-card img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .note-card:nth-child(1) img { object-position: center 35%; }
+    .note-stack .note-card > img { object-position: center 30%; }
+    .note-body { padding: 22px; }
+    .note-body h3 { margin: 0 0 12px; font-size: 23px; line-height: 1.24; }
+    .note-body p { margin: 0 0 14px; color: #574750; font-size: 14.5px; }
+    .comment-proof {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .comment-proof img {
+      width: 100%;
+      height: 210px;
+      max-height: none;
+      object-fit: cover;
+      object-position: left top;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.05);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+      gap: 24px;
+    }
+    .belief {
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .belief h3 { margin: 0 0 16px; font-size: 28px; }
+    .belief-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .belief-list li {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid var(--line);
+      color: #463944;
+      font-weight: 760;
+    }
+    .brief {
+      border-radius: var(--radius);
+      padding: 28px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.92), rgba(255, 230, 241, .76)),
+        radial-gradient(circle at 100% 0%, rgba(126,215,255,.24), transparent 35%);
+    }
+    .brief h3 { margin: 0 0 16px; font-size: 28px; }
+    .brief-block {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px dashed var(--line-strong);
+      background: rgba(255,255,255,.64);
+    }
+    .brief-block p { margin: 0; color: #50434b; font-size: 14.5px; }
+    .brief-block b { color: var(--rose); }
+    .value-line {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(105deg, var(--rose), #d66ca5, #6fcfee);
+      font-weight: 950;
+      text-align: center;
+      box-shadow: var(--soft);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 18px;
+    }
+    .project {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .project:first-child { grid-row: span 2; min-height: 560px; }
+    .project img { width: 100%; height: 100%; object-fit: cover; }
+    .project:first-child img { object-position: center; }
+    .project-caption {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      padding: 16px;
+      border-radius: 22px;
+      color: #fff;
+      background: rgba(45, 36, 48, .48);
+      border: 1px solid rgba(255,255,255,.32);
+      backdrop-filter: blur(14px);
+    }
+    .project-caption strong { display: block; font-size: 20px; line-height: 1.24; }
+    .project-caption span { display: block; margin-top: 6px; font-size: 13px; color: rgba(255,255,255,.84); }
+
+    .ending {
+      min-height: 82vh;
+      display: grid;
+      place-items: center;
+      padding: 80px 0;
+    }
+    .ending-card {
+      width: min(920px, 100%);
+      border-radius: 36px;
+      padding: clamp(34px, 6vw, 72px);
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .ending-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("新无暖-assets/drum-yellow-full.png") center 42%/cover;
+      opacity: .14;
+      filter: saturate(1.08) brightness(1.08);
+    }
+    .ending-card > * { position: relative; z-index: 1; }
+    .ending-card h2 {
+      margin: 0 0 20px;
+      font-family: var(--serif);
+      font-size: clamp(30px, 4.6vw, 58px);
+      line-height: 1.2;
+    }
+    .ending-card p {
+      margin: 0 auto;
+      max-width: 720px;
+      color: #4a3d45;
+      font-size: clamp(17px, 2vw, 24px);
+      line-height: 1.85;
+      font-weight: 760;
+    }
+    .contact {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+      color: var(--rose);
+      font-weight: 950;
+    }
+    .contact span {
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+    }
+
+    @media (max-width: 1020px) {
+      .hero, .why-grid, .method-grid, .team-grid { grid-template-columns: 1fr; }
+      .topic-copy { position: relative; top: auto; }
+      .evidence-grid, .notes-grid { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr 1fr; }
+      .project:first-child { grid-column: 1 / -1; grid-row: auto; min-height: 460px; }
+    }
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 28px, 1180px); }
+      .nav { position: static; }
+      .nav-inner { flex-wrap: wrap; padding: 10px 0; }
+      .links { justify-content: flex-start; }
+      .hero { display: block; padding-top: 18px; }
+      .hero-copy { padding: 24px 20px; }
+      .hero h1 { font-size: 42px; }
+      .section-head { display: block; }
+      .section-head p { max-width: none; text-align: left; margin-top: 10px; }
+      .observations, .project-grid, .match-grid { grid-template-columns: 1fr; }
+      .case-flow { grid-template-columns: 1fr; }
+      .support-timeline { grid-template-columns: 1fr; }
+      .progress-card, .note-card { grid-template-columns: 1fr; }
+      .progress-strip { max-height: none; overflow: visible; }
+      .note-card { min-height: 0; }
+      .value-line { border-radius: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner shell">
+      <a class="brand" href="#hero"><span class="brand-mark">✦</span><span>Cassie Research Notebook</span></a>
+      <div class="links">
+        <a href="#why">Why Nikki</a>
+        <a href="#method">Method</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#notes">Notebook</a>
+        <a href="#team">If on Team</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero shell" id="hero">
+      <div class="hero-copy glass">
+        <span class="pill">Cassie's Content Journey</span>
+        <h1><span>周慧｜Cassie</span><span class="accent">Content Ecosystem Match</span></h1>
+        <div class="role">
+          <strong>内容营销策划实习生｜无限暖暖方向</strong>
+          <span>创作者运营 · 热点策划 · UGC传播 · 数据复盘</span>
+          <span>From User Expression to Community Growth</span>
+        </div>
+        <ul class="profile-line">
+          <li>河海大学应用经济学硕士在读（2027届）</li>
+          <li>Base上海｜每周出勤5天｜6个月以上</li>
+          <li>联系方式 18351845295</li>
+        </ul>
+        <div class="match-grid">
+          <div class="match-card"><b>社区理解</b><span>长期关注女性向社区内容生态，擅长从中发现可持续的内容机会</span></div>
+          <div class="match-card"><b>岗位经验</b><span>达人合作、KOL沟通、节点传播与项目推进</span></div>
+          <div class="match-card"><b>内容验证</b><span>多篇2W+点赞，两个月涨粉3700+</span></div>
+        </div>
+        <div class="manifesto">
+          <p><b>我更关注的不是内容如何传播，而是用户为什么愿意表达。</b></p>
+          <p>这也是我理解的营销策划核心：围绕版本节点和平台热点，判断玩家会因为什么内容产生共鸣；把灵感转成 PGC、联动、KOL 合作和 UGC 扩散方案；上线后再用数据复盘决定继续放大还是及时收束。</p>
+        </div>
+        <a class="scroll-note" href="#why"><span>↓ 继续阅读</span><span>我为什么想做无限暖暖营销策划？</span></a>
+      </div>
+
+    </section>
+
+    <section class="section" id="why">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="pill">Why Infinity Nikki?</span>
+            <h2>为什么是无限暖暖？</h2>
+          </div>
+          <p>我看到的不只是换装游戏，而是一个持续发生玩家共创、热点转译和内容放大的社区。</p>
+        </div>
+        <div class="why-grid">
+          <article class="essay-card glass">
+            <p>我开始关注无限暖暖，不是因为换装。</p>
+            <p>而是因为我发现，这个社区让我重新思考了一件事：</p>
+            <p><b>为什么有些游戏让人想赢，而无限暖暖让人想表达？</b></p>
+            <p>在这里，一张照片、一套染色、一个参数、一句“求同款配置”，都不是孤立内容，而是玩家把审美、身份和情绪分享出来的方式。</p>
+            <p>所以我会把“漂亮”继续往下拆：这条内容能不能引发求参数、求动作、求染色？能不能被 KOL 复刻成同题创作？能不能结合版本节点、展会、流行 IP 或平台热点做二次传播？</p>
+          </article>
+          <div class="why-proof">
+            <article class="proof-card">
+              <strong>我更想看的不是“这张图好不好看”，而是评论区为什么开始追问。</strong>
+              <p>当用户开始问比例、参数、配置、染色，说明内容已经从“观看”进入“复刻”和“共创”。这类信号可以反推作者 Brief：保留画面吸引点，同时补上可复刻方法。</p>
+              <img src="新无暖-assets/comment-ratio.png" alt="真实评论截图：求照片比例">
+            </article>
+            <article class="proof-card">
+              <strong>圈外用户先被审美吸引，圈内玩家继续拆方法。</strong>
+              <p>这意味着无暖内容既能向外破圈，也能向内沉淀作者生态。营销策划要做的是把平台热点、KOL 执行和玩家共创接成一条传播链路。</p>
+              <img src="新无暖-assets/comment-outsider.png" alt="真实评论截图：圈外用户提问">
+            </article>
+          </div>
+        </div>
+        <div class="observations">
+          <article class="ob-card">
+            <strong>Observation 01</strong>
+            <p>圈内玩家分享攻略、染色和摄影技巧，是为了让更多人参与创作，而不是单纯展示自己。</p>
+          </article>
+          <article class="ob-card">
+            <strong>Observation 02</strong>
+            <p>圈外用户往往会先被服装材质、光影和氛围吸引，再开始关注游戏本身。</p>
+          </article>
+          <article class="ob-card">
+            <strong>Observation 03</strong>
+            <p>玩家分享的不只是衣服，而是“今天想成为谁”。这也是内容能不断生长的原因。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="pill">How I Observe Communities</span>
+            <h2>我的社区观察方法</h2>
+          </div>
+          <p>我会先看用户表达，再看内容结构，最后把判断落到可执行、可复盘的营销策划动作里。</p>
+        </div>
+        <div class="method-grid">
+          <div class="loop-card glass">
+            <span class="pill">Research Loop</span>
+            <div class="loop-flow">
+              <div class="loop-step"><b>01</b><span>进入社区：看玩家在讨论什么</span></div>
+              <div class="loop-step"><b>02</b><span>观察表达：找出停留、收藏和追问的原因</span></div>
+              <div class="loop-step"><b>03</b><span>拆解内容：标题、画面、情绪、圈层语言</span></div>
+              <div class="loop-step"><b>04</b><span>提出假设：判断选题能否被更多作者复用</span></div>
+              <div class="loop-step"><b>05</b><span>数据验证：用点赞、收藏、评论和返链复盘</span></div>
+              <div class="loop-step"><b>06</b><span>形成策略：把爆点转成下一轮 Brief</span></div>
+            </div>
+          </div>
+          <div class="progress-strip" aria-label="递进式社区观察方法">
+            <article class="progress-card">
+              <img src="新无暖-assets/♾️奇想衣橱 _ 黎明无声_1_无限暖暖_来自小红书网页版.jpg" alt="无限暖暖摄影内容素材">
+              <span class="progress-index">01</span>
+              <div class="progress-body">
+                <strong>版本节点：先判断传播窗口</strong>
+                <p>版本更新、展会、暑期节点、联动话题，都是内容集中爆发的入口。我会先判断这轮适合向外破圈，还是适合向内沉淀作者生态。</p>
+              </div>
+            </article>
+            <article class="progress-card">
+              <img src="新无暖-assets/drum-green-close.png" alt="无限暖暖咚咚鼓奇遇主题素材">
+              <span class="progress-index">02</span>
+              <div class="progress-body">
+                <strong>热点拆解：把流行词变成暖暖表达</strong>
+                <p>不是生硬贴热点，而是找共同语境：毕业照对应情绪纪念，IP贴靠对应角色代餐，摄影参数对应可复刻创作。</p>
+              </div>
+            </article>
+            <article class="progress-card">
+              <img src="新无暖-assets/july-nikki.png" alt="无限暖暖七月主题素材">
+              <span class="progress-index">03</span>
+              <div class="progress-body">
+                <strong>作者 Brief：给方向，也给可执行抓手</strong>
+                <p>把“拍好看”拆成镜头、滤镜、服装、动作、文案钩子和评论区承接，让 KOL、coser、混剪、解说和线下达人都知道怎么产出。</p>
+              </div>
+            </article>
+            <article class="progress-card">
+              <img src="新无暖-assets/closeup-blue.png" alt="无限暖暖蓝发摄影特写">
+              <span class="progress-index">04</span>
+              <div class="progress-body">
+                <strong>数据复盘：决定继续放量还是换方向</strong>
+                <p>点赞看点击，收藏看复用，评论看讨论，返链看作者生态。如果评论区开始追问做法，说明内容值得整理成下一轮 Brief。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="evidence">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="pill">Internship Experience</span>
+            <h2>把实习经历转成岗位能力</h2>
+          </div>
+          <p>我做过的项目、推进过合作、复盘过数据，最终形成了可迁移的工作判断。</p>
+        </div>
+        <div class="evidence-grid">
+          <article class="evidence-card glass featured">
+            <span class="pill">Brand Content / OutIn</span>
+            <h3>上海傲绅睿杰｜品牌策划实习生</h3>
+            <div class="work-meta"><span>2026.4 - 2026.6</span><span>达人传播</span><span>内容 Brief</span><span>数据复盘</span></div>
+            <p>参与 OutIn 与 Snow Peak、漫旅、朝日唯品等品牌联动项目，负责达人传播、内容策划与项目推进。</p>
+            <div class="metrics"><span>100+ 达人合作/月</span><span>80+ 笔记发布/月</span><span>110W+ 月阅读</span></div>
+            <ul class="work-list">
+              <li>按达人内容风格、评论区质量和互动表现筛选合作对象，推进沟通、排期、内容审核与上线。</li>
+              <li>根据产品场景和用户反馈调整 Brief，把泛生活方式曝光改成更具体的使用场景种草。</li>
+              <li>复盘点赞、收藏、评论和追问内容，沉淀下一轮达人选题方向。</li>
+            </ul>
+            <div class="thinking"><b>工作思考：</b>达人不是越大越好，关键是他的评论区有没有同一套消费语言；能让用户主动追问的内容，才更接近有效传播。</div>
+            <div class="case-study">
+              <h4>案例拆解：从“方形杯爆款”到可复刻的异形容器选题</h4>
+              <p>在达人合作复盘中，我发现一条方形杯内容的爆点不只是产品露出，而是“打工人外带咖啡”场景里，杯型本身形成了第一眼记忆点。后续我将“杯子/容器作为视觉抓点”写进达人沟通方向，引导其他达人围绕异形杯、联名杯和可替代容器做场景化演绎，最终延展出 Kitty 杯、山姆矿泉水瓶等可复制内容。这个过程对应岗位里的爆款拆解、Brief 优化、作者共创和数据复盘。</p>
+              <div class="case-flow" aria-label="OutIn 爆款复刻案例">
+                <div class="case-shot">
+                  <img src="新无暖-assets/outin-square-cup.png" alt="OutIn 方形杯爆款案例">
+                  <span>01 原始爆点：方形杯 + 外带咖啡场景</span>
+                </div>
+                <div class="case-shot">
+                  <img src="新无暖-assets/outin-kitty-cup.png" alt="OutIn Kitty 杯复刻案例">
+                  <span>02 复用方向：异形杯成为第一视觉抓点</span>
+                </div>
+                <div class="case-shot">
+                  <img src="新无暖-assets/outin-sam-bottle.png" alt="OutIn 山姆矿泉水瓶复刻案例">
+                  <span>03 延展产出：山姆瓶强化反差与讨论点</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <div class="support-timeline">
+          <article class="evidence-card glass">
+            <span class="pill">Creator Ecosystem</span>
+            <h3>上海应帆数字科技｜财经 MCN 运营实习生</h3>
+            <div class="work-meta"><span>2025.12 - 2026.3</span><span>创作者运营</span><span>账号观察</span><span>内容审核</span></div>
+            <p>参与财经内容账号与创作者生态运营，协助完成账号内容跟进、创作者资料整理和内容表现观察。</p>
+            <ul class="work-list">
+              <li>整理创作者账号信息、内容方向和更新节奏，辅助判断账号适合的内容定位。</li>
+              <li>跟进内容发布、审核和修改反馈，提升创作者沟通效率。</li>
+              <li>观察内容标题、选题和互动反馈，理解不同圈层用户对内容可信度和实用性的要求。</li>
+            </ul>
+            <div class="thinking"><b>工作思考：</b>创作者运营不是只催内容，而是让作者知道为什么这个方向值得做、怎么做更容易被用户理解。</div>
+          </article>
+          <article class="evidence-card glass">
+            <span class="pill">Project Operation</span>
+            <h3>江苏苏豪汇升｜运营助理实习生</h3>
+            <div class="work-meta"><span>2025</span><span>流程协同</span><span>多方沟通</span><span>项目推进</span></div>
+            <p>协助项目资料整理、流程跟进和跨方沟通，训练了我在多任务、多节点下推进事项落地的能力。</p>
+            <ul class="work-list">
+              <li>维护项目进度信息，整理阶段材料，确保关键节点按时同步。</li>
+              <li>配合内外部沟通，把模糊需求整理成可执行事项。</li>
+              <li>在重复性流程中关注效率和准确性，减少信息遗漏。</li>
+            </ul>
+            <div class="thinking"><b>工作思考：</b>内容生态项目同样依赖流程管理：作者排期、素材审核、数据回收和复盘，都需要稳定推进。</div>
+          </article>
+          <article class="evidence-card glass">
+            <span class="pill">Research & Creation</span>
+            <h3>用户研究与小红书内容创作</h3>
+            <div class="work-meta"><span>硕士研究</span><span>个人账号</span><span>内容验证</span></div>
+            <p>一边用研究方法理解用户行为，一边用个人账号验证内容传播逻辑，形成“观察-假设-验证-复盘”的内容判断习惯。</p>
+            <div class="metrics"><span>3W+ 用户研究样本</span><span>3700+ 粉丝</span><span>多篇 2W+ 点赞</span></div>
+            <ul class="work-list">
+              <li>硕士论文基于海外用户互动数据，分析内容特征如何影响点赞、评论和分享。</li>
+              <li>独立运营小红书账号，完成选题、封面、标题、内容结构和评论区承接。</li>
+              <li>把单篇爆款拆成可复用结构：身份代入、热点叠加、结果前置和评论追问。</li>
+            </ul>
+            <div class="thinking"><b>迁移到无暖：</b>我会把摄影、染色、IP贴靠和剧情混剪看作不同用户表达路径，再用数据判断哪些值得继续放大。</div>
+          </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="notes">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="pill">Research Notebook</span>
+            <h2>Community Notes</h2>
+          </div>
+          <p>我会记录一些长期观察。它们不是普通文章，而是我对玩家表达、社区共创和内容增长的研究手账。</p>
+        </div>
+        <div class="notes-grid">
+          <article class="note-card glass">
+            <img src="新无暖-assets/purple-close.png" alt="无限暖暖摄影角色特写">
+            <div class="note-body">
+              <span class="pill">01</span>
+              <h3>为什么暖暖玩家愿意花两个小时拍一张照片？</h3>
+              <p>因为拍照不是完成任务，而是在为“今天想成为谁”寻找一个可被看见的画面。</p>
+              <p>当摄影点位、滤镜、服装和动作被分享出来，内容就从作品展示变成了创作邀请。</p>
+              <div class="comment-proof">
+                <img src="新无暖-assets/comments-author.png" alt="真实评论截图：作者回答拍摄参数">
+              </div>
+            </div>
+          </article>
+          <div class="note-stack">
+            <article class="note-card glass">
+              <img src="新无暖-assets/♾️奇想衣橱 _ 黎明无声_2_无限暖暖_来自小红书网页版.jpg" alt="无限暖暖摄影角色特写">
+              <div class="note-body">
+                <span class="pill">02</span>
+                <h3>“求参数”“求染色”其实不是攻略，而是共同创作</h3>
+                <p>评论区里反复出现的求参数、求配置、求同款，本质上说明用户不只想看结果，而是想复刻表达。</p>
+                <div class="comment-proof">
+                  <img src="新无暖-assets/comment-ratio.png" alt="真实评论截图：求照片比例">
+                </div>
+              </div>
+            </article>
+            <article class="note-card glass">
+              <img src="新无暖-assets/cowgirl.png" alt="无限暖暖风格化服装造型">
+              <div class="note-body">
+                <span class="pill">03</span>
+                <h3>圈外人看到的是衣服，圈内人看到的是表达</h3>
+                <p>圈外用户会先被“衣服好漂亮、材质好真”吸引；圈内玩家则会继续追问动作、构图、比例和染色。</p>
+                <div class="comment-proof">
+                  <img src="新无暖-assets/comment-butterfly.png" alt="真实评论截图：蝴蝶结讨论">
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="team">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="pill">If I Were on the Team</span>
+            <h2>如果我在无限暖暖营销策划团队</h2>
+          </div>
+          <p>我不会把营销策划理解成“制造热点”，而是帮助已经存在的玩家表达被更多人看见。</p>
+        </div>
+        <div class="team-grid">
+          <article class="belief glass">
+            <h3>我不会</h3>
+            <ul class="belief-list">
+              <li>为了热点而热点，把任何流行词都硬贴到暖暖上。</li>
+              <li>只看点赞，不看收藏、评论、返链和可复制性。</li>
+              <li>只给作者题目，不说明情绪、场景和用户为什么会看。</li>
+            </ul>
+          </article>
+          <article class="brief glass">
+            <h3>我更愿意</h3>
+            <div class="brief-block">
+              <p><b>发现表达：</b>从社区里找出玩家已经在自然创作的内容，比如毕业照、染色、点位、IP贴靠和剧情混剪。</p>
+              <p><b>帮助表达：</b>把灵感整理成作者能执行的 Brief：拍什么、怎么拍、为什么现在拍、给谁看。</p>
+              <p><b>放大表达：</b>用点赞判断点击，用收藏判断复用，用评论判断讨论，用返链判断作者生态是否能继续生长。</p>
+            </div>
+            <div class="value-line">我认为，优秀的营销策划，不是创造表达，而是发现表达，并帮助它传播。</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ending shell">
+      <div class="ending-card glass">
+        <span class="pill">Final Question</span>
+        <h2>我最想研究的问题</h2>
+        <p>如果有机会加入无限暖暖，我最想研究的问题不是“怎样做出爆款”，而是“怎样让更多玩家愿意表达自己”。</p>
+        <div class="contact">
+          <span>周慧 Cassie</span>
+          <span>营销策划 / 内容生态观察</span>
+          <span>From User Expression to Community Growth</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
